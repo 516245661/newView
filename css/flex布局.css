@@ -1,0 +1,35 @@
+/*
+ * 这些属性是在容器上的  也就是在 display为flex
+ * flex-direction  属性决定主轴的方向（即项目的排列方向）  row  从左至右| row-reverse 从右至左| column 向上| column-reverse向下;
+ * flex-wrap
+ * flex-flow
+ * justify-content
+ * align-items
+ * align-content
+ * */
+
+
+/*
+ * 子元素的属性
+ * flex-wrap  是否换行   nowrap 不换行| wrap 第一行在上方| wrap-reverse 第一行在下方;
+ *
+ * 
+ *  
+ *
+ */
+body{
+	width: 100%;
+}
+.content1{
+	width: 500px;
+	display: flex;
+	flex-direction: row;
+	overflow: auto;
+}
+.itme{
+	min-width: 50px;
+	height: 50px;
+	background: burlywood;
+	margin: 10px;
+	flex-wrap: wrap;
+}

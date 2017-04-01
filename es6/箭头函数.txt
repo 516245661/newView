@@ -1,0 +1,24 @@
+//es5 写法  单个参数
+$("#confetti-btn").click(function(event){
+  playTrumpet();
+  fireConfettiCannon();
+});
+
+//es6 写法
+$("#confetti-btn").click(event => {
+  playTrumpet();
+  fireConfettiCannon();
+});
+
+// ES5 多个参数
+var total = values.reduce(function (a, b) {
+  return a + b;
+}, 0);
+//ES6
+var total = values.reduce((a, b) => a + b, 0);
+
+
+箭头函数   
+单个参数      参数=>函数表达式   
+多个参数    (参数1，参数2，...)=>函数表达式
+

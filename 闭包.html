@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//	函数可以有属性，并且能连接到它的构造方法
+	//	函数可以像一个变量一样存在内存中
+	//	函数可以当做参数传给其他函数
+	//	函数可以返回其他函数
+	function mul (x) {
+	    return function (y) { // anonymous function 
+	        return function (z) { // anonymous function 
+	            return x * y * z; 
+	        };
+	    };
+	}
+	console.log(mul(3)(4)(5))
+	
+	//判断是否是数组
+	var a=[1,2];
+	var b ={ss:'123',sss:'222'}
+	console.log(Object.prototype.toString.call( b ))
+	
+	var trees = ["redwood","bay","cedar","oak","maple"];
+	delete trees[3];
+	delete trees[2];
+	console.log(trees.length);
+</script>

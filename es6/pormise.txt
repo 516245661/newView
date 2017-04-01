@@ -1,0 +1,14 @@
+一、promise是啥东东
+所谓Promise对象，就是代表了未来某个将要发生的事件（通常是一个异步操作）。它的好处在于，有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。
+此外，Promise对象还提供了一整套完整的接口，使得可以更加容易地控制异步操作
+var aaa=2,bbb=3,ccc=3;
+let promises = new Promise(resolve=>{
+	if(aaa == bbb){
+		resolve(132)
+	}else{
+		resolve(222)
+	}
+})
+promises.then(function(value){
+	console.log(value)
+})

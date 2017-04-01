@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>加载页面</title>
+	</head>
+	<body>
+		<div class="rotate">
+		</div>
+		<div class="colorchange">
+			颜色的变化
+		</div>
+		<div class="positionChange">
+			
+		</div>
+	</body>
+</html>
+<style type="text/css">
+	/*旋转 start*/
+	.rotate{
+		width: 50px;
+		height: 50px;
+		background: yellowgreen;
+		transform: rotate(100deg);
+		-webkit-transform: rotate(100deg);	/* Safari 和 Chrome */
+		-moz-transform: rotate(100deg);	/* Firefox */
+	}
+	/*旋转 end*/
+	/*颜色 s*/
+	.colorchange{
+		background: gray;
+		width: 150px;
+		height: 50px;
+		animation:amcolor 5s;/*animation 所有动画属性的简写*/
+		-moz-animation:amcolor 5s; /* Firefox */
+		-webkit-animation:amcolor 5s; /* Safari and Chrome */
+		-o-animation:amcolor 5s; /* Opera */
+	}
+	@keyframes amcolor{
+		from{background: yellow;}
+		to{background: gray;}
+	}
+	
+	@-moz-keyframes amcolor /* Firefox */
+	{
+	from {background:yellow;}
+	to {background:gray;}
+	}
+	
+	@-webkit-keyframes amcolor /* Safari and Chrome */
+	{
+	from {background:yellow;}
+	to {background:gray;}
+	}
+	
+	@-o-keyframes amcolor /* Opera */
+	{
+	from {background:yellow;}
+	to {background:gray;}
+	}
+	/*颜色 e*/
+	/*位置 s*/
+	.positionChange{
+		width: 50px;
+		height: 30px;
+		position: fixed;
+		background: green;
+		animation-name: amposition;/*animation-name  动画名称*/
+		animation-duration:500ms ;/*animation-duration  动画运行周期时间*/
+		animation-timing-function:ease;/*animation-timing-function  动画运行的速度曲线*/
+		animation-delay:0;/*animation-delay  动画开始时间 */
+		animation-iteration-count:infinite;/*animation-iteration-count  动画运行次数*/
+		animation-direction:normal;/*animation-direction  动画在下一个周期是否逆向运行*/
+		animation-play-state:running;/*animation-play-state  动画动画的暂停和运行*/
+		animation-fill-mode:none;/*animation-fill-mode  动画时间之外的状态*/
+		/* Firefox */
+		-moz-animation-name: amposition;/*animation-name  动画名称*/
+		-moz-animation-duration:500ms ;/*animation-duration  动画运行周期时间*/
+		-moz-animation-timing-function:ease;/*animation-timing-function  动画运行的速度曲线*/
+		-moz-animation-delay:0;/*animation-delay  动画开始时间 */
+		-moz-animation-iteration-count:infinite;/*animation-iteration-count  动画运行次数*/
+		-moz-animation-direction:normal;/*animation-direction  动画在下一个周期是否逆向运行*/
+		-moz-animation-play-state:running;/*animation-play-state  动画动画的暂停和运行*/
+		-moz-animation-fill-mode:none;/*animation-fill-mode  动画时间之外的状态*/
+		/* Safari and Chrome */
+		-webkit-animation-name: amposition;/*animation-name  动画名称*/
+		-webkit-animation-duration:500ms ;/*animation-duration  动画运行周期时间*/
+		-webkit-animation-timing-function:ease;/*animation-timing-function  动画运行的速度曲线*/
+		-webkit-animation-delay:0;/*animation-delay  动画开始时间 */
+		-webkit-animation-iteration-count:infinite;/*animation-iteration-count  动画运行次数*/
+		-webkit-animation-direction:normal;/*animation-direction  动画在下一个周期是否逆向运行*/
+		-webkit-animation-play-state:running;/*animation-play-state  动画动画的暂停和运行*/
+		-webkit-animation-fill-mode:none;/*animation-fill-mode  动画时间之外的状态*/
+		/* Opera */
+		-o-animation-name: amposition;/*animation-name  动画名称*/
+		-o-animation-duration:500ms ;/*animation-duration  动画运行周期时间*/
+		-o-animation-timing-function:ease;/*animation-timing-function  动画运行的速度曲线*/
+		-o-animation-delay:0;/*animation-delay  动画开始时间 */
+		-o-animation-iteration-count:infinite;/*animation-iteration-count  动画运行次数*/
+		-o-animation-direction:normal;/*animation-direction  动画在下一个周期是否逆向运行*/
+		-o-animation-play-state:running;/*animation-play-state  动画动画的暂停和运行*/
+		-o-animation-fill-mode:none;/*animation-fill-mode  动画时间之外的状态*/
+	}
+	@keyframes ampositio
+	{
+		from{
+			background: red;
+			transform: rotate(0deg);
+			-webkit-transform: rotate(0deg);	/* Safari 和 Chrome */
+			-moz-transform: rotate(100deg);	/* Firefox */
+		}
+		to{
+			background: yellow;
+			transform: rotate(360deg);
+			-webkit-transform: rotate(360deg);	/* Safari 和 Chrome */
+			-moz-transform: rotate(360deg);	/* Firefox */
+		}
+	}
+	@-moz-keyframes amposition
+	{
+		from{
+			background: red;
+			transform: rotate(0deg);
+			-webkit-transform: rotate(0deg);	/* Safari 和 Chrome */
+			-moz-transform: rotate(100deg);	/* Firefox */
+		}
+		to{
+			background: yellow;
+			transform: rotate(360deg);
+			-webkit-transform: rotate(360deg);	/* Safari 和 Chrome */
+			-moz-transform: rotate(360deg);	/* Firefox */
+		}
+	}
+	@-webkit-keyframes amposition
+	{
+		from{
+			background: red;
+			transform: rotate(0deg);
+			-webkit-transform: rotate(0deg);	/* Safari 和 Chrome */
+			-moz-transform: rotate(0deg);	/* Firefox */
+		}
+		to{
+			background: yellow;
+			transform: rotate(360deg);
+			-webkit-transform: rotate(360deg);	/* Safari 和 Chrome */
+			-moz-transform: rotate(360deg);	/* Firefox */
+		}
+	}
+	@-o-keyframes amposition
+	{
+		from{
+			background: red;
+			transform: rotate(0deg);
+			-webkit-transform: rotate(0deg);	/* Safari 和 Chrome */
+			-moz-transform: rotate(0deg);	/* Firefox */
+		}
+		to{
+			background: yellow;
+			transform: rotate(360deg);
+			-webkit-transform: rotate(360deg);	/* Safari 和 Chrome */
+			-moz-transform: rotate(360deg);	/* Firefox */
+		}
+	}
+	/*位置 e*/
+</style>
