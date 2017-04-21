@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>3D翻转</title>
+	</head>
+	<body>
+		<p>翻转</p>
+		<div class="flipOver">
+			<div>12</div>
+			<div>22</div>
+			<div>33</div>
+			<div>55</div>
+		</div>
+	</body>
+</html>
+<style type="text/css">
+	.flipOver{
+	transform:matrix3d(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+	width:100px;
+	height:100px;
+	background:red;
+	animation:flipOverA 5s;
+	-moz-animation:flipOverA 5s; /* Firefox */
+	-webkit-animation:flipOverA 5s; /* Safari and Chrome */
+	-o-animation:flipOverA 5s; /* Opera */
+	}
+	@keyframes flipOverA
+	{
+		from {background:red;}
+		to {background:yellow;}
+	}
+	
+	@-moz-keyframes flipOverA /* Firefox */
+	{
+		from {background:red;}
+		to {background:yellow;}
+	}
+	
+	@-webkit-keyframes flipOverA /* Safari and Chrome */
+	{
+		from {background:red;}
+		to {background:yellow;}
+	}
+	
+	@-o-keyframes flipOverA /* Opera */
+	{
+		from {background:red;}
+		to {background:yellow;}
+	}
+</style>

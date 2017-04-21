@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>pre换行</title>
+	</head>
+	<style type="text/css">
+		#pre-test{
+			width: 150px;
+			background:burlywood;
+			white-space:pre-wrap;
+		}
+		/*
+		white-space：的属性值
+		normal	默认。空白会被浏览器忽略。
+		pre	空白会被浏览器保留。其行为方式类似 HTML 中的 <pre> 标签。
+		nowrap	文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。
+		pre-wrap	保留空白符序列，但是正常地进行换行。
+		pre-line	合并空白符序列，但是保留换行符。
+		inherit	规定应该从父元素继承 white-space 属性的值。
+		* */
+	</style>
+	<body>
+		<div class="test">
+			<pre id="pre-test">ds</pre>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	document.getElementById('pre-test').innerHTML= `
+1.宝宝从拍摄完毕到选片之前，皆可报名参加“萌宝秀”活动
+2.客服会将“萌宝秀”链接发送至您的微信
+3.分享链接可邀请好友为宝宝收集爱心与小红包
+4.活动结束之后，凭最终收集的爱心数量，获赠相应礼品（只选其一）
+5.所有小红包将用于选片当天兑换精修片或其它产品
+PS：
+1.一个微信好友只能为您收集一个爱心；
+2.多送一个小红包可多得一个爱心；
+3.活动获赠礼品不可折现或替换；
+4.活动有效期以上面倒计时为准。
+`
+	;
+</script>

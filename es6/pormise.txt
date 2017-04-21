@@ -1,6 +1,8 @@
 一、promise是啥东东
 所谓Promise对象，就是代表了未来某个将要发生的事件（通常是一个异步操作）。它的好处在于，有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。
 此外，Promise对象还提供了一整套完整的接口，使得可以更加容易地控制异步操作
+
+ES6的Promise对象是一个构造函数，用来生成Promise实例
 var aaa=2,bbb=3,ccc=3;
 let promises = new Promise(resolve=>{
 	if(aaa == bbb){
@@ -12,3 +14,24 @@ let promises = new Promise(resolve=>{
 promises.then(function(value){
 	console.log(value)
 })
+
+
+
+要将现有对象转为Promise对象，Promise.resolve方法就起到这个作用。
+var p = Promise.resolve('Hello');
+p.then(function (s){
+  console.log(s)
+});
+
+Promise.all/Promise.race 方法用于将多个Promise实例，包装成一个新的Promise实例。
+var p = Promise.all([p1,p2,p3]);
+生成一个Promise对象的数组
+var promises = [2, 3, 5, 7, 11, 13].map((id)=>{
+  return "/post/" + id + ".json";
+});
+
+Promise.all(promises).then((posts)=> {
+   console.log(posts)
+}).catch(function(reason){
+   console.log(reason)
+});

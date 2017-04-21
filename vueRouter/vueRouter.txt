@@ -1,0 +1,28 @@
+如果在一个模块化工程中使用VueRouter，必须要通过 Vue.use() 明确地安装路由功能：
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+
+用 Vue.js + vue-router 创建单页应用，是非常简单的。使用 Vue.js 时，我们就已经把组件组合成一个应用了，
+当你要把 vue-router 加进来，只需要配置组件和路由映射，然后告诉 vue-router 在哪里渲染它们
+
+
+一个『路径参数』使用冒号 : 标记。当匹配到一个路由时，参数值会被设置到 this.$route.params，可以在每个组件内使用。
+`<div>User {{ $route.params.id }}</div>`   ` ` 与 ' ' 的效果相似 待查看    ``换行也可以用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

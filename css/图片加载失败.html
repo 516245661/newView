@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片加载失败</title>
+	</head>
+	<body>
+		<div class="no-img">
+			<img src="../img/1s.jpg" alt="有没有"/>
+		</div>
+		<div class="no-img">
+			<img src="../img/12s.jpg" alt="有1没有"/>
+		</div>
+		<div class="no-img">
+			<img src="../img/13s.jpg" alt="有2没有"/>
+		</div>
+		<div class="no-img">
+			<img src="../img/1.jpg" alt="有没有"/>
+		</div>
+		<div class="no-img">
+			<img src="../img/1.jpg" alt="有1没有"/>
+		</div>
+		<div class="no-img">
+			<img src="../img/1.jpg" alt="有2没有"/>
+		</div>
+	</body>
+</html>
+<style type="text/css">
+/*img {
+    font-weight: 300;
+    line-height: 2;
+    text-align: center;
+    height: auto;
+    display: block;
+    position: relative;
+}
+ 
+img:before {
+    content: "抱歉，图片加载失败 :(";
+    display: block;
+    margin-bottom: 10px;
+}
+ 
+img:after {
+    content: "(url: " attr(src) ")";
+    display: block;
+    font-size: 12px;
+}*/
+.no-img{
+	position: relative;
+	min-height: 50px;
+}
+img {  
+  max-height: 50px;
+}
+ 
+img:before {  
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;;
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  border: 2px dotted rgb(200, 200, 200);
+  border-radius: 5px;
+}
+ 
+img:after {  
+  content: "\f127" " Broken Image of " attr(alt);
+  display: block;
+  font-size: 16px;
+  font-style: normal;
+  font-family: FontAwesome;
+  color: rgb(100, 100, 100);
+ 
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+</style>

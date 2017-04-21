@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>所有的css</title>
+	</head>
+	<body>
+		<div class="css-active">
+			<h2>:active CSS选择器示例</h2>
+    		<p>这个链接在鼠标按下和松开的这段时间内会变成绿色: <a href="#">Mozilla Developer Network</a>.</p>
+		</div>
+		<div class="css-after">
+			<h2>::after</h2>
+			<pre>
+				element:after  { style properties }  /* CSS2 语法 */
+				element::after { style properties }  /* CSS3 语法 */
+				::after表示法是在CSS 3中引入的,::符号是用来区分伪类和伪元素的.支持CSS3的浏览器同时也都支持CSS2中引入的表示法:after.
+			</pre>
+			<p class="yes1">有屁股</p>
+			<p>没有屁股</p>
+			<p class="yes2">这个屁股有点长。</p>
+			<p>这是上面代码的实现<br />
+			  我们有一些 <span look-data="collection of words and punctuation">文字</span> 有一些
+			  <span look-data="small popups which also hide again">提示</span>。<br />
+			  把鼠标放上去<span look-data="not to be taken literally">看看</span>.
+			</p>
+		</div>
+		<div class="css-align-content">
+			<h2>CSS align-content 属性定义弹性容器的侧轴方向上有额外空间时，如何排布每一行。当弹性容器只有一行时无作用。</h2>
+			<div class="content">
+				<div>center</div>
+				<div>start</div>
+				<div>end</div>
+				<div>flex-start</div>
+				<div>flex-end</div>
+				<div>left</div>
+				<div>right</div>
+				<div>baseline</div>
+				<div>first baseline</div>
+				<div>last baseline</div>
+				<div>space-between</div>
+				<div>space-around</div>
+				<div>space-evenly</div>
+				<div>stretch</div>
+				<div>baseline</div>
+				<div>safe center</div>
+				<div>unsafe center</div>
+				<div>inherit</div>
+				<div>initial</div>
+				<div>unset</div>
+			</div>
+		</div>
+		
+		
+		
+	</body>
+</html>
+<script type="text/javascript" src=""></script>
+<script type="text/javascript">
+	var content = document.getElementsByClassName("css-align-content");
+	console.log(content)
+	content.addEventListener("change", function (evt) {
+	  document.getElementById("container").style.alignContent = evt.target.value;
+	});
+</script>
+<style type="text/css">
+	body{
+		background: #DEB887;
+		color: #fff;
+		margin-bottom: 300px;
+	}
+	.css-active:hover p a{
+		color: #fff;
+		background: red;
+	}
+	.css-active p a:hover{
+		color: #008000;
+		background: #CCCCCC;
+	}
+	.css-after .yes1::after{
+		content: '这是啥屁股！';
+		color: red;
+	}
+	.css-after .yes2::after{
+		content: '这就是那个长长的屁股！';
+		color: #FFFF00;
+	}
+	.css-after span[look-data]	{
+		position: relative;
+	  	text-decoration: underline;
+	  	color: #00F;
+	  	cursor: help;
+	}
+	.css-after span[look-data]:hover::after {
+	  	content: attr(look-data);
+	  	position: absolute;
+	  	left: 0;
+	  	top: 24px;
+	  	min-width: 200px;
+	  	border: 1px #aaaaaa solid;
+	  	border-radius: 10px;
+	  	background-color: #ffffcc;
+	  	padding: 12px;
+	  	color: #000000;
+	  	font-size: 14px;
+	  	z-index: 1;
+		}
+	.css-align-content .content{
+		display: flex;
+		width: 400px;
+		height: 200px;
+		flex-wrap:wrap ;/*换行*/
+		overflow: auto;
+		align-content: center;/*对齐方式 */
+	}
+	.css-align-content .content div{
+		width: 70px;
+		height: 70px;
+		background: #fff;
+		margin: 10px;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</style>

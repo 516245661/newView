@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	for(var i = 0; i < data.data.length; i++) {
+		var a = document.createElement('a');
+		var url = data.data[i].url;
+		var filename = '';
+		a.href = url;
+		a.download = filename;
+		a.click();
+		window.URL.revokeObjectURL(url); 
+		//释放 url 内容 
+		}
+	},
+</script>
