@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>写入于输出</title>
+	</head>
+	<body>
+		<div class="test">
+			<button type="button" onclick="alert('welcome')">点击一下试一试</button>
+		</div>
+		<div id="test-innerhtml"></div>
+		<div class="testClass">
+			<img class="imgs" src="http://www.w3school.com.cn/i/eg_bulboff.gif"/>
+			<p>这是一个灯哦！</p>
+			<button type="button" class="openOrdown" onclick="lights()">开灯</button>
+		</div>
+		<div class="changeStyle">
+			<p style="color: red;" id="changeStyle">我的颜色非常红！</p>
+			<button type="button" class="changeStyleButton" onclick="changeColor()">我要让你变成蓝色</button>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	document.write("<p>这是一个p标签，用document.write()写入，用document写入的东西微在最后面</p>");
+	var get_testID = document.getElementById('test-innerhtml'); //查找元素
+	get_testID.innerHTML = '这个不能用（）加的类容';
+	//开灯的方法
+	function lights(){
+		var get_openClass = document.getElementsByClassName('openOrdown');
+		if(get_openClass[0].innerHTML == '开灯'){
+			document.getElementsByClassName('imgs')[0].src = "http://www.w3school.com.cn/i/eg_bulbon.gif";
+			get_openClass[0].innerHTML = '关灯';
+		}else{
+			document.getElementsByClassName('imgs')[0].src = "http://www.w3school.com.cn/i/eg_bulboff.gif";
+			get_openClass[0].innerHTML = '开灯';
+		}
+	}
+	function changeColor(){
+		if(document.getElementById('changeStyle').style.color == 'red'){
+			document.getElementById('changeStyle').style.color = 'blue'
+			document.getElementById('changeStyle').style.fontSize = '40px'
+			document.getElementsByClassName('changeStyleButton')[0].innerHTML = '我要让你变成红色'
+		}else{
+			document.getElementById('changeStyle').style.color = 'red'
+			document.getElementById('changeStyle').style.fontSize = '40px'
+			document.getElementsByClassName('changeStyleButton')[0].innerHTML = '我要让你变成蓝色'
+		}
+	}
+	
+	
+</script>
