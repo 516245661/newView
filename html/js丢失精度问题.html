@@ -15,36 +15,37 @@
 			<p>相加</p>
 			<input type="number" class="nums1"/> +
 			<input type="number" class="nums2"/>
-			<button type="button" onclick="count('add')">输出</button>
-			<p class="nums3"></p>
+			<button type="button" onclick="count(event,'add')">输出</button>
+			=<span class="nums3"></span>
 		</div>
 		<div class="test">
 			<p>相减</p>
 			<input type="number" class="nums1"/> -
 			<input type="number" class="nums2"/>
-			<button type="button" onclick="count('sub')">输出</button>
-			<p class="nums3"></p>
+			<button type="button" onclick="count(event,'sub')">输出</button>
+			=<span class="nums3"></span>
 		</div>
 		<div class="test">
 			<p>相乘</p>
 			<input type="number" class="nums1"/> *
 			<input type="number" class="nums2"/>
-			<button type="button" onclick="count('cheng')">输出</button>
-			<p class="nums3"></p>
+			<button type="button" onclick="count(event,'cheng')">输出</button>
+			=<span class="nums3"></span>
 		</div>
 		<div class="test">
 			<p>相除</p>
 			<input type="number" class="nums1"/> /
 			<input type="number" class="nums2"/>
-			<button type="button" onclick="count('chu')">输出</button>
-			<p class="nums3"></p>
+			<button type="button" onclick="count(event,'chu')">输出</button>
+			=<span class="nums3"></span>
 		</div>
 	</body>
 </html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script>
 	/**
 	 * 通过字符串操作将一个数放大或缩小指定倍数
-	 * @num 被转换的数 被处理的数据 
+	 * @num 想被处理的数据 
 	 * @m 放大或缩小的倍数，为正表示小数点向右移动，表示放大；为负反之
 	 */
 	function numScale(num, m) {
@@ -93,6 +94,7 @@
 	 * 两数相加
 	 */
 	function numAdd(num1, num2) {
+		var num1= num1*1,num2=num2*1;
 	  	var multiple = Math.max(getExponent(num1), getExponent(num2));
 	 	return numScale(numScale(num1, multiple) + numScale(num2, multiple), multiple * -1);
 	}
@@ -101,6 +103,7 @@
 	 * 两数相减
 	 */
 	function numSub(num1, num2) {
+		var num1= num1*1,num2=num2*1;
 	  	var multiple = Math.max(getExponent(num1), getExponent(num2));
 	  	return numScale(numScale(num1, multiple) - numScale(num2, multiple), multiple * -1);
 	}
@@ -109,41 +112,65 @@
 	 * 两数相乘
 	 */
 	function numCheng(num1, num2) {
+		var num1= num1*1,num2=num2*1;
 	  	var multiple1 = getExponent(num1)
 	  	var multiple2 = getExponent(num2);
-	  	return numScale(numScale(num1, multiple1) * numScale(num2, multiple2), (multiple1 + multiple2) * -1);
+	  	return numScale(numScale(num1, multiple1) * numScale(num2, multiple2), numAdd(multiple1,multiple2) * -1);
 	}
 	
 	/**
 	 * 两数相除
 	 */
 	function unmChu(num1, num2) {
+		var num1= num1*1,num2=num2*1;
 	  	var multiple1 = getExponent(num1)
 	  	var multiple2 = getExponent(num2);
-	  	return numScale(numScale(num1, multiple1) / numScale(num2, multiple2), (multiple1 + multiple2) * -1);
+	  	return numScale(numScale(num1, multiple1) / numScale(num2, multiple2), numAdd(multiple1,multiple2) * -1);
 	}
-	function count(type){
+	
+	/**
+	 * 点击时间
+	 */
+	function count(e,type){
 		switch (type){
 			case 'add':
-				numAdd(0.01,10)
-//				document.write(numAdd(0.01,10))
-				console.log(event.srcElement.parentElement.childNodes[3]())
+				var one = $(e.target).siblings('.nums1').val()*1
+				var two = $(e.target).siblings('.nums2').val()*1
+				var vals = numAdd(one,two)
+				$(e.target).siblings('.nums3').text(vals)
 				break;
 			case 'sub':
-				numSub(0.01,10)
-				document.write(numSub(0.01,10))
+				var one = $(e.target).siblings('.nums1').val()*1
+				var two = $(e.target).siblings('.nums2').val()*1
+				var vals = numSub(one,two)
+				$(e.target).siblings('.nums3').text(vals)
 				break;
 			case 'cheng':
-				numCheng(0.01,10)
-				document.write(numCheng(0.01,10))
+				var one = $(e.target).siblings('.nums1').val()*1
+				var two = $(e.target).siblings('.nums2').val()*1
+				var vals = numCheng(one,two)
+				$(e.target).siblings('.nums3').text(vals)
 				break;
 			case 'chu':
-				unmChu(0.01,10)
-				document.write(unmChu(0.01,10))
+				var one = $(e.target).siblings('.nums1').val()*1
+				var two = $(e.target).siblings('.nums2').val()*1
+				var vals = unmChu(one,two)
+				$(e.target).siblings('.nums3').text(vals)
 				break;
 			default:
-			console.log(321)
 				break;
 		}
 	}
+	/**
+	 * 测试更多数据
+	 */
+//	var bbb = 1;
+//	var ccc;
+//	for(bbb ; bbb < 4 ; bbb++){
+//		var aaa = 100.01;
+//		for(aaa; aaa< 1000 ; aaa = numAdd(aaa,0.01)){
+//			ccc = numCheng(aaa,bbb)
+//			console.log(ccc)
+//		}
+//	}
 </script>
