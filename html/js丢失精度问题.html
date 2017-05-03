@@ -49,7 +49,9 @@
 	 * @m 放大或缩小的倍数，为正表示小数点向右移动，表示放大；为负反之
 	 */
 	function numScale(num, m) {
+		console.log(num)
 	  var parts = num.toString().split('.');// 拆分整数、小数部分
+	  console.log(parts)
 	  var integerLen = parts[0].length;// 原始值的整数位数
 	  var decimalLen = parts[1] ? parts[1].length : 0;// 原始值的小数位数
 	  if (m > 0) { // 放大，当放大的倍数比原来的小数位大时，需要在数字后面补零
@@ -164,13 +166,14 @@
 	/**
 	 * 测试更多数据
 	 */
-//	var bbb = 1;
-//	var ccc;
-//	for(bbb ; bbb < 4 ; bbb++){
-//		var aaa = 100.01;
-//		for(aaa; aaa< 1000 ; aaa = numAdd(aaa,0.01)){
-//			ccc = numCheng(aaa,bbb)
-//			console.log(ccc)
-//		}
-//	}
+	var bbb = 1;
+	var ccc;
+	for(bbb ; bbb < 4 ; bbb++){
+		var aaa = 100;
+		for(aaa; aaa< 12 ; aaa = numAdd(aaa,1)){
+			ccc = numCheng(aaa,bbb)
+			console.log(ccc)
+		}
+	}
+	numScale(139000, -2)
 </script>
