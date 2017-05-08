@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>输出</title>
+	</head>
+	<body>
+		<div class="test">
+			<p id="test">这里有一个id</p>
+			<h1>this is h1</h1>
+		</div>
+		<div class="test">
+			<button type="button" onclick="clickTry()">点我之前要又准备哦！</button>
+		</div>
+	</body>
+</html>
+<script>
+	document.getElementById('test').innerHTML = 'this is ID'
+	document.getElementsByTagName('h1')[0].innerHTML = 'this is getElementByTagName'
+	document.write('<p> 这是一个p</p>')	
+	function clickTry(){
+		document.write('<p>还有没有除我之外的其他东西！</p>')
+	}
+</script>
+

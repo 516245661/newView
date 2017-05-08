@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现</title>
+	</head>
+	<body>
+		<div class="test">
+			<p class="testOnclick">这里是会被改变的！</p>
+			<button type="button" onclick="myClick()">点击一下试一试</button>
+		</div>
+	</body>
+</html>
+<script>
+	alert('My frist Javascript')
+	document.write('<h1>this is my write h1</h1>')
+	document.write('<p>This is my frist p</p>')
+	function myClick(){
+		document.getElementsByClassName('testOnclick')[0].innerHTML = 'this is my frist function'
+	}
+</script>
