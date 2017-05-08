@@ -5,15 +5,15 @@
 		<title>直接插入排序</title>
 	</head>
 	<body>
+		<div class="test">
+			<div class="test1"></div>
+		</div>
 		
 	</body>
 </html>
 <script>
 	//排序  从小到大  star
-	 var arr = [5,8,2,9,0,7,4,6,1,3],
-        len = arr.length,
-        j,tem;
-
+	var arr = [5,8,2,9,0,7,4,6,1,8,2,9,0,7,4,6,1,8,2,9,0,9,0,7,4,6,1], len = arr.length, j,tem;
     for(i=1; i < len; i++){
       tmp = arr[i];
       j = i - 1;
@@ -23,7 +23,7 @@
       }
       arr[j+1] = tmp;
     }
-    console.log(arr)
+    document.getElementsByClassName('test1')[0].innerHTML = arr;
     //排序  从小到大  end
     
     

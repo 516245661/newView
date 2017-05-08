@@ -1,0 +1,6 @@
+在线JQ
+http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js    
+在线微信jisk
+https://res.wx.qq.com/open/js/jweixin-1.0.0.js
+
+
