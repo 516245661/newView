@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>递归</title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+<script>
+//	var fn = function fn(n){
+//		if(n*1<1){
+//			return 0
+//		}else{
+//			return n + fn(n - 1);
+//		}
+//	}
+//	fn(3);
+//	console.log(fn(3))
+	//自己写一个
+	function digui(n){
+		if(n<1){
+			alert('请输入大于1的整数')
+		}else{
+			var val=1;
+			for(var a=1;a<n+1;a++){
+				val = val*a
+			}
+			console.log(val)
+		}
+	}
+	digui(5)
+</script>
+
