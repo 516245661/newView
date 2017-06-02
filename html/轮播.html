@@ -11,53 +11,102 @@
 			<p>上面有滚动弹幕</p>
 		</div>
 		<!--显示弹幕 -->
-		<div>
-			
-		</div>
+		<ul class="scorll-list">
+		</ul>
 	</body>
 </html>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.scorll-list {
+		position: fixed;
+		top: 0;
+		background: yellow;
+		width: 100%;
+	}
+	.scorll-list li{
+		position: relative;
+		height: 50px;
+		padding: 10px;
+		list-style: none;
+	}
+	.scorll-list p{
+		position: absolute;
+		right: -120px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+	}
+	.scorll-list p img{
+		width: 50px;
+		height: 50px;
+		border-radius:50% ;
+	}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script>
 	//类容 固定的
 	var contents = [
-		{name:'小红1',speck:'你好可爱1',img:'图片地址'},
-		{name:'小红2',speck:'你好可爱2',img:'图片地址'},
-		{name:'小红3',speck:'你好可爱3',img:'图片地址'},
-		{name:'小红4',speck:'你好可爱4',img:'图片地址'},
-		{name:'小红5',speck:'你好可爱5',img:'图片地址'},
-		{name:'小红6',speck:'你好可爱6',img:'图片地址'},
-		{name:'小红7',speck:'你好可爱7',img:'图片地址'},
-		{name:'小红8',speck:'你好可爱8',img:'图片地址'},
-		{name:'小红9',speck:'你好可爱9',img:'图片地址'},
-		{name:'小红10',speck:'你好可爱10',img:'图片地址'},
-		{name:'小红11',speck:'你好可爱11',img:'图片地址'},
-		{name:'小红12',speck:'你好可爱12',img:'图片地址'},
-	]
-	//行数   随机数1~5
-	var barrageRow;
+		{name:'小红1',speck:'你好爱23131',img:'../img/1.jpg'},
+		{name:'小红2',speck:'你好',img:'../img/1.jpg'},
+		{name:'小红3',speck:'你好可爱3',img:'../img/1.jpg'},
+		{name:'小红4',speck:'wobu xiang',img:'../img/1.jpg'},
+		{name:'小红5',speck:'你好可爱5',img:'../img/1.jpg'},
+		{name:'小红6',speck:'你好可dsaasd爱6',img:'../img/1.jpg'},
+//		{name:'小红8',speck:'你好可爱8',img:'../img/1.jpg'},
+//		{name:'小红9',speck:'你好可爱9',img:'../img/1.jpg'},
+//		{name:'小红10',speck:'你好可爱10',img:'../img/1.jpg'},
+//		{name:'小红11',speck:'你好可爱11',img:'../img/1.jpg'},
+	];
+	var oldContents = JSON.parse(JSON.stringify(contents));
+	var barrageRow;//行数   随机数1~5
 	var barrageRowArry = [];//每行 显示的类容
 	if(contents.length>5){
-		barrageRow = Math.ceil(Math.random()*5);
+		barrageRow =2 + Math.ceil(Math.random()*3);
 	}else{
 		barrageRow = contents.length;
 	}
+	var barrageNum = Math.ceil(oldContents.length/barrageRow) //每行显示内容的个数 最多：barrageNum  最少： barrageNum-1
 	//初始化 显示数组
 	for(var i=0;i<barrageRow;i++){
 		barrageRowArry[i] = [];
 	}
 	//每行 显示的类容
-	for(var ii=0;ii<contents.length;ii++){
-		
-		var len = contents.length
-		var val = Math.ceil(Math.random()*len)
-		barrageRowArry[i] = contents[val];
-		contents.splice(val,1)
+	for(var iii=0;iii<barrageNum;iii++){
+		for(var ii=0;ii<barrageRow;ii++){
+			var len = contents.length
+			var val = Math.ceil(Math.random()*len)
+			barrageRowArry[ii].push(contents[val-1])
+			contents.splice(val-1,1)
+		}
 	}
-	var barrageNum = contents.length/barrageRow
-	
-	console.log(contents)
-	console.log(barrageRow)
-	console.log(barrageRowArry)
-	console.log(barrageNum)
-	console.log(contents)
-	
+	//把数据组装到一行
+	for(var list=0;list<barrageRow;list++){
+		var clase = ".scorll-list .li"+ list +' p';
+		$('.scorll-list').append('<li class=li'+list+'><p></p></li>')
+		for(var listChild=0;listChild<barrageNum;listChild++){
+			if(barrageRowArry[list][listChild]){
+				$(clase).append('<img src='+ barrageRowArry[list][listChild].img +'><span>' + barrageRowArry[list][listChild].name + '：' + barrageRowArry[list][listChild].speck + '</span>&nbsp;&nbsp;')
+			}
+		}
+		$(clase).css('width',$(clase).css('width'))
+		$(clase).css('right','-'+ (parseInt($(clase).css('width')) + Math.ceil(Math.random()*100)) + 'px')
+		scorll(list);
+	}
+	//弹幕  js
+    function scorll(SClist) {
+        var w = document.body.clientWidth + 20;
+        var SCclase = ".scorll-list .li"+ SClist +' p';
+        var w2 = $(SCclase).css('width');
+        setInterval(function() {
+            if(parseInt($(SCclase).css('right'))> w ){
+            	$(SCclase).css('right', '-'+$(SCclase).css('width'))
+            }else if(parseInt($(SCclase).css('right')) > parseInt(w2)){
+//          	$(SCclase).css('right', '-'+$(SCclase).css('width'))
+            }
+            $(SCclase).css("right", parseInt($(SCclase).css('right')) + 2 + "px")
+        }, 20);
+    }
 </script>
