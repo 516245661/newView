@@ -3,3 +3,5 @@ B2B（Business-to-Business）平台有1688.com、找钢网、找塑料、慧聪�
 B2C（Business-to-Customer）平台比较常见，有亚马逊、京东、天猫、唯会品、苏宁易购等，是企业直接面向终端个人消费者的交易服务平台。
 
 C2C（Customer to Customer）算是中国特色，常见有的淘宝、闲鱼、转转等，是个人对个人的交易服务平台。
+
+

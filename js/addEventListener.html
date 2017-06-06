@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button" onclick="aaa()">点击一下</button>
+	</body>
+</html>
+<script>
+	var i = 0;
+	function ccc(){
+		i++
+	   console.log(i)
+	}
+	function aaa(){
+		document.addEventListener("click",  ccc);
+	}
+	function bbb(){
+		document.removeEventListener("click", ccc);
+	}
+</script>
