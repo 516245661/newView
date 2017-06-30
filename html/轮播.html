@@ -97,7 +97,7 @@
 		$(clase).css('right','-'+ (parseInt($(clase).css('width')) + Math.ceil(Math.random()*200)) + 'px')
 		scorll(list);
 	}
-	//弹幕  js
+	//滚动  js
     function scorll(SClist) {
         var w = document.body.clientWidth + 20;
         var SCclase = ".scorll-list .li"+ SClist +' p';
@@ -105,8 +105,6 @@
         setInterval(function() {
             if(parseInt($(SCclase).css('right'))> w ){
             	$(SCclase).css('right', '-'+$(SCclase).css('width'))
-            }else if(parseInt($(SCclase).css('right')) > parseInt(w2)){
-//          	$(SCclase).css('right', '-'+$(SCclase).css('width'))
             }
             $(SCclase).css("right", parseInt($(SCclase).css('right')) + 2 + "px")
         }, 20);
