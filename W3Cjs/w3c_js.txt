@@ -1,0 +1,59 @@
+壹、
+JavaScript 是世界上最流行的编程语言。
+JavaScript 是脚本语言
+JavaScript 是一种轻量级的编程语言。
+JavaScript 是可插入 HTML 页面的编程代码。
+JavaScript 插入 HTML 页面后，可由所有的现代浏览器执行。
+贰、
+JavaScript 与 Java 是两种完全不同的语言，无论在概念还是设计上。
+Java（由 Sun 发明）是更复杂的编程语言。
+ECMA-262 是 JavaScript 标准的官方名称。
+叁、
+JavaScript 会在页面加载时向 HTML 的 <body> 写文本
+请使用 document.write() 仅仅向文档输出写内容。
+如果在文档已完成加载后执行 document.write，整个 HTML 页面将被覆盖：
+肆、
+JavaScript 语句向浏览器发出的命令。语句的作用是告诉浏览器该做什么。
+分号 ;
+分号用于分隔 JavaScript 语句。
+通常我们在每条可执行的语句结尾添加分号。
+使用分号的另一用处是在一行中编写多条语句。
+提示：您也可能看到不带有分号的案例。
+在 JavaScript 中，用分号来结束语句是可选的。
+JavaScript 代码
+JavaScript 代码（或者只有 JavaScript）是 JavaScript 语句的序列。
+浏览器会按照编写顺序来执行每条语句。
+JavaScript 代码块
+JavaScript 语句通过代码块的形式进行组合。
+块由左花括号开始，由右花括号结束。
+块的作用是使语句序列一起执行。
+JavaScript 函数是将语句组合在块中的典型例子。
+JavaScript 对大小写敏感。
+JavaScript 对大小写是敏感的。
+当编写 JavaScript 语句时，请留意是否关闭大小写切换键。
+函数 getElementById 与 getElementbyID 是不同的。
+同样，变量 myVariable 与 MyVariable 也是不同的。
+JavaScript 是脚本语言。浏览器会在读取代码时，逐行地执行脚本代码。而对于传统编程来说，会在执行前对所有代码进行编译。
+伍、
+JavaScript 注释
+JavaScript 不会执行注释。
+我们可以添加注释来对 JavaScript 进行解释，或者提高代码的可读性。
+单行注释以 // 开头。
+陆、
+变量是存储信息的容器。
+变量必须以字母开头
+变量也能以 $ 和 _ 符号开头（不过我们不推荐这么做）
+变量名称对大小写敏感（y 和 Y 是不同的变量）
+JavaScript 数据类型
+JavaScript 变量还能保存其他数据类型，比如文本值 (name="Bill Gates")。
+在 JavaScript 中，类似 "Bill Gates" 这样一条文本被称为字符串。
+JavaScript 变量有很多种类型，但是现在，我们只关注数字和字符串。
+当您向变量分配文本值时，应该用双引号或单引号包围这个值。
+当您向变量赋的值是数值时，不要使用引号。如果您用引号包围数值，该值会被作为文本来处理。
+
+
+
+
+
+
+

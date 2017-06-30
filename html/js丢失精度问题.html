@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js丢失精度问题哇哇哇哇哇哇哇哇哇哇哇哇哇</title>
+	</head>
+	<style>
+		.test{
+			margin: 10px;
+		}
+	</style>
+	<body>
+		<p>大整数精度丢失 当x大于2^53时也会失去精度</p>
+		<div class="test">
+			<p>相加</p>
+			<input type="number" class="nums1"/> +
+			<input type="number" class="nums2"/>
+			<button type="button" onclick="count(event,'add')">输出</button>
+			=<span class="nums3"></span>
+		</div>
+		<div class="test">
+			<p>相减</p>
+			<input type="number" class="nums1"/> -
+			<input type="number" class="nums2"/>
+			<button type="button" onclick="count(event,'sub')">输出</button>
+			=<span class="nums3"></span>
+		</div>
+		<div class="test">
+			<p>相乘</p>
+			<input type="number" class="nums1"/> *
+			<input type="number" class="nums2"/>
+			<button type="button" onclick="count(event,'cheng')">输出</button>
+			=<span class="nums3"></span>
+		</div>
+		<div class="test">
+			<p>相除</p>
+			<input type="number" class="nums1"/> /
+			<input type="number" class="nums2"/>
+			<button type="button" onclick="count(event,'chu')">输出</button>
+			=<span class="nums3"></span>
+		</div>
+	</body>
+</html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script>
+	/**
+	 * 通过字符串操作将一个数放大或缩小指定倍数
+	 * @num 想被处理的数据 
+	 * @m 放大或缩小的倍数，为正表示小数点向右移动，表示放大；为负反之
+	 */
+	function numScale(num, m) {
+		console.log(num)
+	  var parts = num.toString().split('.');// 拆分整数、小数部分
+	  console.log(parts)
+	  var integerLen = parts[0].length;// 原始值的整数位数
+	  var decimalLen = parts[1] ? parts[1].length : 0;// 原始值的小数位数
+	  if (m > 0) { // 放大，当放大的倍数比原来的小数位大时，需要在数字后面补零
+	    // 补多少个零：m - 原始值的小数位数
+	    var zeros = m - decimalLen;
+	    while (zeros > 0) {
+	      zeros -= 1;
+	      parts.push(0);
+	    }
+	  // 缩小，当缩小的倍数比原来的整数位大时，需要在数字前面补零
+	  } else {
+	    // 补多少个零：m - 原始值的整数位数
+	    var zeros = Math.abs(m) - integerLen;
+	    while (zeros > 0) {
+	      zeros -= 1;
+	      parts.unshift(0);
+	    }
+	  }
+	
+	  // 小数点位置，也是整数的位数: 
+	  //    放大：原始值的整数位数 + 放大的倍数
+	  //    缩小：原始值的整数位数 - 缩小的倍数
+	  var index = integerLen + m;
+	  // 将每一位都拆到数组里，方便插入小数点
+	  parts = parts.join('').split('');
+	  // 当为缩小时，因为可能会补零，所以使用原始值的整数位数
+	  // 计算出的小数点位置可能为负，这个负数应该正好是补零的
+	  // 个数，所以小数点位置应该为 0
+	  parts.splice(index > 0 ? index : 0, 0, '.');
+	
+	  return parseFloat(parts.join(''));
+	}
+	
+	/**
+	 * 获取小数位数
+	 */
+	function getExponent(num) {
+	  return Math.floor(num) === num ? 0 : num.toString().split('.')[1].length;
+	}
+	
+	/**
+	 * 两数相加
+	 */
+	function numAdd(num1, num2) {
+		var num1= num1*1,num2=num2*1;
+	  	var multiple = Math.max(getExponent(num1), getExponent(num2));
+	 	return numScale(numScale(num1, multiple) + numScale(num2, multiple), multiple * -1);
+	}
+	
+	/**
+	 * 两数相减
+	 */
+	function numSub(num1, num2) {
+		var num1= num1*1,num2=num2*1;
+	  	var multiple = Math.max(getExponent(num1), getExponent(num2));
+	  	return numScale(numScale(num1, multiple) - numScale(num2, multiple), multiple * -1);
+	}
+	
+	/**
+	 * 两数相乘
+	 */
+	function numCheng(num1, num2) {
+		var num1= num1*1,num2=num2*1;
+	  	var multiple1 = getExponent(num1)
+	  	var multiple2 = getExponent(num2);
+	  	return numScale(numScale(num1, multiple1) * numScale(num2, multiple2), numAdd(multiple1,multiple2) * -1);
+	}
+	
+	/**
+	 * 两数相除
+	 */
+	function unmChu(num1, num2) {
+		var num1= num1*1,num2=num2*1;
+	  	var multiple1 = getExponent(num1)
+	  	var multiple2 = getExponent(num2);
+	  	return numScale(numScale(num1, multiple1) / numScale(num2, multiple2), numAdd(multiple1,multiple2) * -1);
+	}
+	
+	/**
+	 * 点击时间
+	 */
+	function count(e,type){
+		switch (type){
+			case 'add':
+				var one = $(e.target).siblings('.nums1').val()*1
+				var two = $(e.target).siblings('.nums2').val()*1
+				var vals = numAdd(one,two)
+				$(e.target).siblings('.nums3').text(vals)
+				break;
+			case 'sub':
+				var one = $(e.target).siblings('.nums1').val()*1
+				var two = $(e.target).siblings('.nums2').val()*1
+				var vals = numSub(one,two)
+				$(e.target).siblings('.nums3').text(vals)
+				break;
+			case 'cheng':
+				var one = $(e.target).siblings('.nums1').val()*1
+				var two = $(e.target).siblings('.nums2').val()*1
+				var vals = numCheng(one,two)
+				$(e.target).siblings('.nums3').text(vals)
+				break;
+			case 'chu':
+				var one = $(e.target).siblings('.nums1').val()*1
+				var two = $(e.target).siblings('.nums2').val()*1
+				var vals = unmChu(one,two)
+				$(e.target).siblings('.nums3').text(vals)
+				break;
+			default:
+				break;
+		}
+	}
+	/**
+	 * 测试更多数据
+	 */
+	var bbb = 1;
+	var ccc;
+	for(bbb ; bbb < 4 ; bbb++){
+		var aaa = 100;
+		for(aaa; aaa< 12 ; aaa = numAdd(aaa,1)){
+			ccc = numCheng(aaa,bbb)
+			console.log(ccc)
+		}
+	}
+	numScale(139000, -2)
+</script>

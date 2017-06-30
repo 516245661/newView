@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="400" height="400"></canvas>
+	</body>
+
+</html>
+<script type="text/javascript">
+	/*
+	drawArrow(ctx, fromX, fromY, toX, toY, theta, headlen, width, color)
+	ctx：Canvas绘图环境
+	fromX, fromY：起点坐标（也可以换成p1，只不过它是一个数组）
+	toX, toY：终点坐标 (也可以换成p2，只不过它是一个数组)
+	theta：三角斜边一直线夹角
+	headlen：三角斜边长度
+	width：箭头线宽度
+	color：箭头颜色
+	 */
+
+	window.addEventListener('load', eventWindowLoaded, false); //向文档添加事件句柄 
+
+	function eventWindowLoaded() {
+		canvasApp(); //包含整个Canvas应用程序
+	}
+
+	function canvasSupport(e) {
+		return !!e.getContext;
+
+	}
+
+	function canvasApp() {
+		var myCanvas = document.getElementById('myCanvas');
+		if(!canvasSupport(myCanvas)) { //判断这个dome是否是画布
+			return;
+		}
+		//getContext() 用于在画布上绘图的环境 参数：2d： 二维空间  3d： 三维空间
+		var ctx = myCanvas.getContext('2d'); //二位空间
+		//myCanvas.width = window.innerWidth;  //强行改变画布的宽度 ，自适应全屏
+		//myCanvas.height = window.innerHeight;  //强行改变画布的高度，自适应全屏
+
+		// Draw grid  画布格子，背景
+		function drawGrid(ctx, w, h, strokeStyle, step) {
+			for(var x = 0; x < w; x += step) {
+				ctx.moveTo(x, 0);
+				ctx.lineTo(x, h);
+			}
+
+			for(var y = 0; y < h; y += step) {
+				ctx.moveTo(0, y);
+				ctx.lineTo(w, y);
+			}
+
+			ctx.strokeStyle = strokeStyle;
+			ctx.stroke();
+		}
+
+		// Draw arrow
+		function drawArrow(ctx, fromX, fromY, toX, toY, theta, headlen, width, color) {
+
+			theta = typeof(theta) != 'undefined' ? theta : 30;
+			headlen = typeof(theta) != 'undefined' ? headlen : 10;
+			width = typeof(width) != 'undefined' ? width : 1;
+			color = typeof(color) != 'color' ? color : '#000';
+
+			// 计算各角度和对应的P2,P3坐标
+			var angle = Math.atan2(fromY - toY, fromX - toX) * 180 / Math.PI,
+				angle1 = (angle + theta) * Math.PI / 180,
+				angle2 = (angle - theta) * Math.PI / 180,
+				topX = headlen * Math.cos(angle1),
+				topY = headlen * Math.sin(angle1),
+				botX = headlen * Math.cos(angle2),
+				botY = headlen * Math.sin(angle2);
+
+			ctx.save(); //保存当前环境
+			ctx.beginPath(); //起始一条路径，重置当前路径  --一条新的路线 
+			//moveTo  把路径移动到画布中的指定点，不创建线条   --起点 lineTo  添加一个新点，然后在画布中创建从该点到最后指定点的线条    --终点     一对就是一天线
+			//lineWidth 线条的宽度
+			//stroke  绘制已定义的路径
+			//restore 返回之前保存过的路径状态和属性
+			//strokeStyle 线条的颜色
+			var arrowX = fromX - topX, arrowY = fromY - topY;
+			ctx.moveTo(arrowX, arrowY);
+			ctx.moveTo(fromX, fromY);
+			ctx.lineTo(toX, toY);
+			arrowX = toX + topX;
+			arrowY = toY + topY;
+			ctx.moveTo(arrowX, arrowY);
+			ctx.lineTo(toX, toY);
+			arrowX = toX + botX;
+			arrowY = toY + botY;
+			ctx.lineTo(arrowX, arrowY);
+			ctx.strokeStyle = color;
+			ctx.lineWidth = width;
+			ctx.stroke();
+			ctx.restore();
+		}
+
+		function drawScreen() {
+			drawGrid(ctx, myCanvas.width, myCanvas.height, '#eee', 20);
+
+			// 向右箭头
+			drawArrow(ctx, 50, 50, myCanvas.width / 2 + 150, myCanvas.height / 2, 10, 50, 1, '#f36');
+			// 向下箭头
+//			drawArrow(ctx, myCanvas.width / 2, myCanvas.height / 2, myCanvas.width / 2, myCanvas.height / 2 + 150, 30, 30, 4, '#f66');
+//			// 向左箭头
+//			drawArrow(ctx, myCanvas.width / 2, myCanvas.height / 2, myCanvas.width / 2 - 150, myCanvas.height / 2, 30, 30, 4, '#0f6');
+//			// 向上箭头
+//			drawArrow(ctx, myCanvas.width / 2, myCanvas.height / 2, myCanvas.width / 2, myCanvas.height / 2 - 150, 30, 30, 4, '#d6f');
+
+		}
+
+		drawScreen();
+
+	}
+</script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>一起画只百度熊吧</title>
+	</head>
+
+	<body>
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0">
+			<defs>
+				<filter id="gooey">
+					<feGaussianBlur in="SourceGraphic" stdDeviation="10" result="step1" />
+					<feColorMatrix in="step1" mode="matrix" values=" 1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9" result="step2" />
+					<feComposite in="SourceGraphic" in2="step2" operator="atop" />
+				</filter>
+			</defs>
+		</svg>
+	</body>
+
+</html>
+<script>
+</script>
